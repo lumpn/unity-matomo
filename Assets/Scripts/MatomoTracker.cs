@@ -5,7 +5,7 @@ using System;
 
 public sealed class MatomoTracker
 {
-    public IEnumerator Foo(string action, string title)
+    public IEnumerator Request(string action, string title)
     {
         var payloadAction = Uri.EscapeDataString(action);
         var payloadTitle = Uri.EscapeDataString(title);
@@ -18,7 +18,6 @@ public sealed class MatomoTracker
         Debug.Log(uri.Scheme);
 
         var request = UnityWebRequest.Get(uri);
-        request.certificateHandler = new DummyCertificateHandler();
         var op = request.SendWebRequest();
         yield return op;
 

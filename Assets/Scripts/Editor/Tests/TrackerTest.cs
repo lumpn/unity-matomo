@@ -1,15 +1,12 @@
-using NUnit.Framework;
-using UnityEngine;
+using System.Collections;
+using UnityEngine.TestTools;
 
 public class TrackerTest
 {
-    [Test]
-    public void TrackPageView()
+    [UnityTest]
+    public IEnumerator TrackPageView()
     {
-        var tracker = new Piwik.Tracker.PiwikTracker(1, "http://onanotherplanet.net/analytics/matomo");
-        tracker.DisableCookieSupport();
-        tracker.SetUrl("http://onanotherplanet.net/analytics/matomo/TrackerTest/TrackPageView");
-        var response = tracker.DoTrackPageView("TrackPageView");
-        Debug.Log(response);
+        var tracker = new MatomoTracker();
+        return tracker.Request("http://onanotherplanet.net/TrackerTest/TrackPageView", "TrackPageView");
     }
 }
