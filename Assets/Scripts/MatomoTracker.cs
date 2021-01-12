@@ -2,9 +2,28 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
 using System;
+using System.Text;
+using System.Security.Cryptography;
 
-public sealed class MatomoTracker
+[CreateAssetMenu]
+public sealed class MatomoTracker : ScriptableObject
 {
+    [SerializeField] private string matomoUrl = "http://matomo.example.com";
+
+    [SerializeField] private string websiteUrl = "http://example.com";
+    [SerializeField] private int websiteId = 1;
+
+    public MatomoSession CreateSession(string userId)
+    {
+        using (var md5 = MD5.Create())
+        {
+            var userBytes = Encoding.ASCII.GetBytes(userId);
+            var userHash = md5.ComputeHash(userBytes);
+
+            return MatomoSession.Create(matomoUrl, websiteUrl, websiteId, userHash);
+        }
+    }
+
     public IEnumerator Request(string action, string title)
     {
         var payloadAction = Uri.EscapeDataString(action);

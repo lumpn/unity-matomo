@@ -6,6 +6,6 @@ public class TrackerDemo : MonoBehaviour
     IEnumerator Start()
     {
         var tracker = new MatomoTracker();
-        return tracker.Request("http://onanotherplanet.net/TrackerDemo/Start", "TrackerDemo");
+        return tracker.Request("http://onanotherplanet.net/TrackerDemo/Update", "");
     }
 }
