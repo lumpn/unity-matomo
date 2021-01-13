@@ -1,1 +1,2 @@
-Matomo analytics for Unity
+Matomo Analytics for Unity
+https://matomo.org/
