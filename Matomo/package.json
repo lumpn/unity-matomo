@@ -5,7 +5,6 @@
   "description": "Matomo Analytics tracker for Unity.",
   "unity": "2017.1",
   "dependencies": {
-    "com.unity.test-framework": "1.1.19",
     "com.unity.modules.unitywebrequestwww": "1.0.0"
   },
   "keywords": [
@@ -16,5 +15,6 @@
   "author": {
     "name": "Jonas Boetel",
     "url": "https://github.com/lumpn"
-  }
+  },
+  "type": "library"
 }
