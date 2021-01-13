@@ -20,7 +20,7 @@ namespace Lumpn.Matomo.Test
         {
             var tracker = new MatomoTracker(matomoUrl, websiteUrl, websiteId);
             var session = tracker.CreateSession(userId);
-            var op = session.Record("TrackerTest/TrackPageView");
+            var op = session.Record("TrackPageView", "TrackerTest/TrackPageView", 0.1f);
             yield return op;
 
             var request = op.webRequest;

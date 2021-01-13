@@ -15,7 +15,7 @@ namespace Lumpn.Matomo
         {
             var tracker = trackerData.CreateTracker();
             var session = tracker.CreateSession("user1234");
-            var op = session.Record("TrackerDemo/Start");
+            var op = session.Record("Start", "TrackerDemo/Start", Random.value);
             yield return op;
 
             var request = op.webRequest;

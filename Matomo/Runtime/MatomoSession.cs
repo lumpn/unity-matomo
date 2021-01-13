@@ -34,18 +34,23 @@ namespace Lumpn.Matomo
             this.cachedUrl = cachedUrl;
         }
 
-        public UnityWebRequestAsyncOperation Record(string action)
+        public UnityWebRequestAsyncOperation Record(string title, string page, float timespanSeconds)
         {
-            var url = BuildUrl(action);
+            var timespanMilliseconds = timespanSeconds * 1000;
+            var url = BuildUrl(title, page, (int)timespanMilliseconds);
             var request = new UnityWebRequest(url, UnityWebRequest.kHttpVerbGET, null, null);
             var op = request.SendWebRequest();
             return op;
         }
 
-        private string BuildUrl(string action)
+        private string BuildUrl(string title, string page, int timespanMilliseconds)
         {
             builder.Append(cachedUrl);
-            builder.Append(Uri.EscapeDataString(action));
+            builder.Append(Uri.EscapeDataString(page));
+            builder.Append("&action_name=");
+            builder.Append(Uri.EscapeDataString(title));
+            builder.Append("&gt_ms=");
+            builder.Append(timespanMilliseconds);
             var url = builder.ToString();
             builder.Clear();
 
