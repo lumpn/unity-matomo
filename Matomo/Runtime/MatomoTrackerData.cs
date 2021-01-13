@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Matomo
+namespace Lumpn.Matomo
 {
     [CreateAssetMenu(menuName = "Data/Matomo/MatomoTrackerData")]
     public sealed class MatomoTrackerData : ScriptableObject

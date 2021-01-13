@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Matomo
+namespace Lumpn.Matomo
 {
     public class TrackerDemo : MonoBehaviour
     {

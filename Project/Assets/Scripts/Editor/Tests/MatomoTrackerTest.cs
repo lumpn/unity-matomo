@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine.TestTools;
 using NUnit.Framework;
 
-namespace Matomo.Test
+namespace Lumpn.Matomo.Test
 {
     public sealed class TrackerTest
     {

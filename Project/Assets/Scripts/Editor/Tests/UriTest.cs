@@ -2,7 +2,7 @@ using System;
 using NUnit.Framework;
 using UnityEngine.Profiling;
 
-namespace Matomo.Test
+namespace Lumpn.Matomo.Test
 {
     public sealed class UriTest
     {

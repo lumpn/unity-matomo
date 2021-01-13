@@ -1,7 +1,7 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Matomo
+namespace Lumpn.Matomo
 {
     public sealed class MatomoTracker
     {

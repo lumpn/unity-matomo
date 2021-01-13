@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace Matomo
+namespace Lumpn.Matomo.Utils
 {
     public static class HexUtils
     {

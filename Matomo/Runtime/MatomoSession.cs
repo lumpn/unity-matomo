@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Text;
+using Lumpn.Matomo.Utils;
 using UnityEngine.Networking;
 
-namespace Matomo
+namespace Lumpn.Matomo
 {
     public sealed class MatomoSession
     {
