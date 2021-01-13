@@ -1,8 +1,12 @@
 {
-    "name": "de.lumpn.matomo.Runtime",
+    "name": "Lumpn.Matomo.Editor.Tests",
     "rootNamespace": "",
-    "references": [],
-    "includePlatforms": [],
+    "references": [
+        "GUID:a2cd1f509f44e7a488fd46ae8b30790d"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
