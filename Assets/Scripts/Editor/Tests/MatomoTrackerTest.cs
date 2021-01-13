@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine.TestTools;
+using Matomo;
 
 public class TrackerTest
 {

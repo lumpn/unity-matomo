@@ -1,33 +1,50 @@
-﻿using System.Collections;
-using System;
+﻿using System;
 using System.Text;
+using UnityEngine.Networking;
 
-public sealed class MatomoSession
+namespace Matomo
 {
-    private readonly string cachedUrl;
-
-    public static MatomoSession Create(string matomoUrl, string websiteUrl, int websiteId, byte[] userHash)
+    public sealed class MatomoSession
     {
-        var builder = new StringBuilder(matomoUrl);
-        builder.Append("/matomo.php?apiv=1&rec=1&idsite=");
-        builder.Append(websiteId);
-        builder.Append("&_id=");
-        HexUtils.AppendHex(builder, userHash);
-        builder.Append("&url=");
-        builder.Append(Uri.EscapeDataString(websiteUrl));
-        builder.Append(Uri.EscapeDataString("/"));
+        private readonly StringBuilder builder = new StringBuilder();
+        private readonly string cachedUrl;
 
-        var url = builder.ToString();
-        return new MatomoSession(url);
-    }
+        public static MatomoSession Create(string matomoUrl, string websiteUrl, int websiteId, byte[] userHash)
+        {
+            var builder = new StringBuilder(matomoUrl);
+            builder.Append("/matomo.php?apiv=1&rec=1&idsite=");
+            builder.Append(websiteId);
+            builder.Append("&_id=");
+            HexUtils.AppendHex(builder, userHash);
+            builder.Append("&url=");
+            builder.Append(Uri.EscapeDataString(websiteUrl));
+            builder.Append(Uri.EscapeDataString("/"));
 
-    private MatomoSession(string cachedUrl)
-    {
-        this.cachedUrl = cachedUrl;
-    }
+            var url = builder.ToString();
+            return new MatomoSession(url);
+        }
 
-    public IEnumerator Record(string action)
-    {
-        return null;
+        private MatomoSession(string cachedUrl)
+        {
+            this.cachedUrl = cachedUrl;
+        }
+
+        public UnityWebRequestAsyncOperation Record(string action)
+        {
+            var url = BuildUrl(action);
+            var request = new UnityWebRequest(url, UnityWebRequest.kHttpVerbGET, null, null);
+            var op = request.SendWebRequest();
+            return op;
+        }
+
+        private string BuildUrl(string action)
+        {
+            builder.Append(cachedUrl);
+            builder.Append(action);
+            var url = builder.ToString();
+            builder.Clear();
+
+            return url;
+        }
     }
 }
