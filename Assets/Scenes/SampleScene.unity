@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 707985442}
   - component: {fileID: 707985441}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Tracker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -245,6 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b6b9e7748e700e409c09ff321a8c185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trackerData: {fileID: 0}
 --- !u!4 &707985442
 Transform:
   m_ObjectHideFlags: 0

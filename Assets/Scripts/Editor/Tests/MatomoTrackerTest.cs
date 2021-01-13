@@ -1,13 +1,26 @@
 using System.Collections;
 using UnityEngine.TestTools;
-using Matomo;
+using NUnit.Framework;
 
-public class TrackerTest
+namespace Matomo.Test
 {
-    [UnityTest]
-    public IEnumerator TrackPageView()
+    public sealed class TrackerTest
     {
-        var tracker = new MatomoTracker();
-        return tracker.Request("http://onanotherplanet.net/TrackerTest/TrackPageView", "TrackPageView");
+        private const string matomoUrl = "http://onanotherplanet.net/analytics/matomo";
+        private const string websiteUrl = "http://onanotherplanet.net";
+        private const int websiteId = 1;
+        private const string userId = "user1234";
+
+        [UnityTest]
+        public IEnumerator TrackPageView()
+        {
+            var tracker = new MatomoTracker(matomoUrl, websiteUrl, websiteId);
+            var session = tracker.CreateSession(userId);
+            var op = session.Record("TrackerTest/TrackPageView");
+            yield return op;
+
+            var request = op.webRequest;
+            Assert.AreEqual(200, request.responseCode);
+        }
     }
 }

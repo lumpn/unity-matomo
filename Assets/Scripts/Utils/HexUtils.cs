@@ -1,22 +1,25 @@
 using System.Text;
 
-public static class HexUtils
+namespace Matomo
 {
-    public static void AppendHex(StringBuilder builder, byte[] bytes)
+    public static class HexUtils
     {
-        foreach (var value in bytes)
+        public static void AppendHex(StringBuilder builder, byte[] bytes)
         {
-            var upper = value >> 4;
-            var lower = value & 0x0F;
+            foreach (var value in bytes)
+            {
+                var upper = value >> 4;
+                var lower = value & 0x0F;
 
-            builder.Append(HalfByteToHex(upper));
-            builder.Append(HalfByteToHex(lower));
+                builder.Append(HalfByteToHex(upper));
+                builder.Append(HalfByteToHex(lower));
+            }
         }
-    }
 
-    private static char HalfByteToHex(int value)
-    {
-        var result = (value < 10) ? value + 48 : value + 55;
-        return (char)result;
+        private static char HalfByteToHex(int value)
+        {
+            var result = (value < 10) ? value + 48 : value + 55;
+            return (char)result;
+        }
     }
 }

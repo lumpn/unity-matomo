@@ -2,21 +2,24 @@ using System;
 using NUnit.Framework;
 using UnityEngine.Profiling;
 
-public sealed class UriTest
+namespace Matomo.Test
 {
-    [Test]
-    public void EscapeDataString()
+    public sealed class UriTest
     {
-        Profiler.BeginSample("EscapeDataString");
+        [Test]
+        public void EscapeDataString()
+        {
+            Profiler.BeginSample("EscapeDataString");
 
-        Profiler.BeginSample("Plain");
-        Uri.EscapeDataString("Plain"); // 0 bytes
-        Profiler.EndSample();
+            Profiler.BeginSample("Plain");
+            Uri.EscapeDataString("Plain"); // 0 bytes
+            Profiler.EndSample();
 
-        Profiler.BeginSample("ForwardSlash");
-        Uri.EscapeDataString("Forward/Slash"); // 342 bytes
-        Profiler.EndSample();
+            Profiler.BeginSample("ForwardSlash");
+            Uri.EscapeDataString("Forward/Slash"); // 342 bytes
+            Profiler.EndSample();
 
-        Profiler.EndSample();
+            Profiler.EndSample();
+        }
     }
 }

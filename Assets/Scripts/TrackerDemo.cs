@@ -1,17 +1,21 @@
 using System.Collections;
-using Matomo;
 using UnityEngine;
 
-public class TrackerDemo : MonoBehaviour
+namespace Matomo
 {
-    IEnumerator Start()
+    public class TrackerDemo : MonoBehaviour
     {
-        var tracker = new MatomoTracker();
-        var session = tracker.CreateSession("user1234");
-        var op = session.Record("TrackerDemo/Start");
-        yield return op;
+        [SerializeField] private MatomoTrackerData trackerData;
 
-        var request = op.webRequest;
-        Debug.Log(request.responseCode);
+        IEnumerator Start()
+        {
+            var tracker = trackerData.CreateTracker();
+            var session = tracker.CreateSession("user1234");
+            var op = session.Record("TrackerDemo/Start");
+            yield return op;
+
+            var request = op.webRequest;
+            Debug.Log(request.responseCode);
+        }
     }
 }

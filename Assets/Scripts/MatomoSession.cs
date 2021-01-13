@@ -40,7 +40,7 @@ namespace Matomo
         private string BuildUrl(string action)
         {
             builder.Append(cachedUrl);
-            builder.Append(action);
+            builder.Append(Uri.EscapeDataString(action));
             var url = builder.ToString();
             builder.Clear();
 
