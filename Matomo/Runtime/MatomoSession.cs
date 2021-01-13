@@ -1,4 +1,8 @@
-﻿using System;
+﻿//----------------------------------------
+// MIT License
+// Copyright(c) 2020 Jonas Boetel
+//---------------------------------------- 
+using System;
 using System.Text;
 using Lumpn.Matomo.Utils;
 using UnityEngine.Networking;

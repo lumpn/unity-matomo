@@ -1,6 +1,10 @@
+//----------------------------------------
+// MIT License
+// Copyright(c) 2020 Jonas Boetel
+//---------------------------------------- 
 using System.Collections;
-using UnityEngine.TestTools;
 using NUnit.Framework;
+using UnityEngine.TestTools;
 
 namespace Lumpn.Matomo.Test
 {
