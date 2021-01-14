@@ -43,7 +43,6 @@ namespace Lumpn.Matomo
             var url = BuildUrl(title, page, (int)timespanMilliseconds);
             var request = new UnityWebRequest(url, UnityWebRequest.kHttpVerbGET, null, null);
             var op = request.SendWebRequest();
-            UnityEngine.Debug.Log(url);
             return op;
         }
 
