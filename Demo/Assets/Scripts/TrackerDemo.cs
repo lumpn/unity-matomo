@@ -10,16 +10,21 @@ namespace Lumpn.Matomo
     public class TrackerDemo : MonoBehaviour
     {
         [SerializeField] private MatomoTrackerData trackerData;
+        [SerializeField] private int numRecords = 10;
 
         IEnumerator Start()
         {
             var tracker = trackerData.CreateTracker();
             var session = tracker.CreateSession("user1234");
-            var op = session.Record("Start", "TrackerDemo/Start", Random.value);
-            yield return op;
 
-            var request = op.webRequest;
-            Debug.Log(request.responseCode);
+            for (int i = 0; i < numRecords; i++)
+            {
+                var op = session.Record("Start", "TrackerDemo/Start", Random.value);
+                yield return op;
+
+                var request = op.webRequest;
+                Debug.Log(request.responseCode);
+            }
         }
     }
 }

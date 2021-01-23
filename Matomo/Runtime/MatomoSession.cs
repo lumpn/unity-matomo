@@ -13,6 +13,7 @@ namespace Lumpn.Matomo
     {
         private readonly StringBuilder builder = new StringBuilder();
         private readonly string cachedUrl;
+        private readonly Random random;
 
         public static MatomoSession Create(string matomoUrl, string websiteUrl, int websiteId, byte[] userHash)
         {
@@ -26,12 +27,14 @@ namespace Lumpn.Matomo
             builder.Append(Uri.EscapeDataString("/"));
 
             var url = builder.ToString();
-            return new MatomoSession(url);
+            var seed = CalculateSeed(userHash);
+            return new MatomoSession(url, seed);
         }
 
-        private MatomoSession(string cachedUrl)
+        private MatomoSession(string cachedUrl, int seed)
         {
             this.cachedUrl = cachedUrl;
+            this.random = new Random(seed);
         }
 
         public UnityWebRequestAsyncOperation Record(string title, string page, float timespanSeconds)
@@ -49,12 +52,27 @@ namespace Lumpn.Matomo
             builder.Append(Uri.EscapeDataString(page));
             builder.Append("&action_name=");
             builder.Append(Uri.EscapeDataString(title));
-            builder.Append("&gt_ms=");
+            builder.Append("&pf_net=");
             builder.Append(timespanMilliseconds);
+            builder.Append("&rand=");
+            builder.Append(random.Next());
             var url = builder.ToString();
             builder.Clear();
 
             return url;
+        }
+
+        private static int CalculateSeed(byte[] bytes)
+        {
+            unchecked
+            {
+                int result = 17;
+                foreach (var value in bytes)
+                {
+                    result = result * 23 + value;
+                }
+                return result;
+            }
         }
     }
 }
