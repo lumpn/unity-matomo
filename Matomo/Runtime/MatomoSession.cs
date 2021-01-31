@@ -11,29 +11,29 @@ namespace Lumpn.Matomo
 {
     public sealed class MatomoSession
     {
-        private readonly StringBuilder builder = new StringBuilder();
-        private readonly string cachedUrl;
+        private readonly StringBuilder stringBuilder = new StringBuilder();
+        private readonly string baseUrl;
         private readonly Random random;
 
         public static MatomoSession Create(string matomoUrl, string websiteUrl, int websiteId, byte[] userHash)
         {
-            var builder = new StringBuilder(matomoUrl);
-            builder.Append("/matomo.php?apiv=1&rec=1&idsite=");
-            builder.Append(websiteId);
-            builder.Append("&_id=");
-            HexUtils.AppendHex(builder, userHash);
-            builder.Append("&url=");
-            builder.Append(Uri.EscapeDataString(websiteUrl));
-            builder.Append(Uri.EscapeDataString("/"));
+            var sb = new StringBuilder(matomoUrl);
+            sb.Append("/matomo.php?apiv=1&rec=1&idsite=");
+            sb.Append(websiteId);
+            sb.Append("&_id=");
+            HexUtils.AppendHex(sb, userHash);
+            sb.Append("&url=");
+            sb.Append(Uri.EscapeDataString(websiteUrl));
+            sb.Append(Uri.EscapeDataString("/"));
 
-            var url = builder.ToString();
+            var url = sb.ToString();
             var seed = CalculateSeed(userHash);
             return new MatomoSession(url, seed);
         }
 
-        private MatomoSession(string cachedUrl, int seed)
+        private MatomoSession(string baseUrl, int seed)
         {
-            this.cachedUrl = cachedUrl;
+            this.baseUrl = baseUrl;
             this.random = new Random(seed);
         }
 
@@ -48,16 +48,19 @@ namespace Lumpn.Matomo
 
         private string BuildUrl(string title, string page, int timespanMilliseconds)
         {
-            builder.Append(cachedUrl);
-            builder.Append(Uri.EscapeDataString(page));
-            builder.Append("&action_name=");
-            builder.Append(Uri.EscapeDataString(title));
-            builder.Append("&pf_net=");
-            builder.Append(timespanMilliseconds);
-            builder.Append("&rand=");
-            builder.Append(random.Next());
-            var url = builder.ToString();
-            builder.Clear();
+            stringBuilder.Clear();
+
+            stringBuilder.Append(baseUrl);
+            stringBuilder.Append(Uri.EscapeDataString(page));
+            stringBuilder.Append("&action_name=");
+            stringBuilder.Append(Uri.EscapeDataString(title));
+            stringBuilder.Append("&pf_net=");
+            stringBuilder.Append(timespanMilliseconds);
+            stringBuilder.Append("&rand=");
+            stringBuilder.Append(random.Next());
+
+            var url = stringBuilder.ToString();
+            stringBuilder.Clear();
 
             return url;
         }

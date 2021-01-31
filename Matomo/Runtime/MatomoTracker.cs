@@ -2,8 +2,7 @@
 // MIT License
 // Copyright(c) 2021 Jonas Boetel
 //---------------------------------------- 
-using System.Security.Cryptography;
-using System.Text;
+using Lumpn.Matomo.Utils;
 
 namespace Lumpn.Matomo
 {
@@ -22,13 +21,8 @@ namespace Lumpn.Matomo
 
         public MatomoSession CreateSession(string userId)
         {
-            using (var md5 = MD5.Create())
-            {
-                var userBytes = Encoding.ASCII.GetBytes(userId);
-                var userHash = md5.ComputeHash(userBytes);
-
-                return MatomoSession.Create(matomoUrl, websiteUrl, websiteId, userHash);
-            }
+            var userHash = HashUtils.HashMD5(userId);
+            return MatomoSession.Create(matomoUrl, websiteUrl, websiteId, userHash);
         }
     }
 }

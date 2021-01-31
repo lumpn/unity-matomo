@@ -8,15 +8,22 @@ namespace Lumpn.Matomo.Utils
 {
     public static class HexUtils
     {
-        public static void AppendHex(StringBuilder builder, byte[] bytes)
+        public static string ToString(byte[] bytes)
+        {
+            var sb = new StringBuilder();
+            AppendHex(sb, bytes);
+            return sb.ToString();
+        }
+
+        public static void AppendHex(StringBuilder sb, byte[] bytes)
         {
             foreach (var value in bytes)
             {
                 var upper = value >> 4;
                 var lower = value & 0x0F;
 
-                builder.Append(HalfByteToHex(upper));
-                builder.Append(HalfByteToHex(lower));
+                sb.Append(HalfByteToHex(upper));
+                sb.Append(HalfByteToHex(lower));
             }
         }
 
