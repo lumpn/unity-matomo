@@ -6,7 +6,7 @@ using System.Collections;
 using NUnit.Framework;
 using UnityEngine.TestTools;
 
-namespace Lumpn.Matomo.Test
+namespace Lumpn.Matomo.Demo
 {
     public sealed class TrackerTest
     {
