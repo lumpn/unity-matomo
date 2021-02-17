@@ -1,7 +1,7 @@
 //----------------------------------------
 // MIT License
 // Copyright(c) 2021 Jonas Boetel
-//---------------------------------------- 
+//----------------------------------------
 using Lumpn.Matomo.Utils;
 
 namespace Lumpn.Matomo

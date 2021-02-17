@@ -1,7 +1,7 @@
 //----------------------------------------
 // MIT License
 // Copyright(c) 2021 Jonas Boetel
-//---------------------------------------- 
+//----------------------------------------
 using System.Text;
 using NUnit.Framework;
 using Lumpn.Matomo.Utils;

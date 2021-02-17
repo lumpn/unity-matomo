@@ -1,5 +1,5 @@
 {
-    "name": "Lumpn.Matomo.Runtime",
+    "name": "Lumpn.Matomo",
     "rootNamespace": "",
     "references": [],
     "includePlatforms": [],

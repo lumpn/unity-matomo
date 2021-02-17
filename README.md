@@ -1,8 +1,5 @@
-# unity-matomo
+# Matomo Analytics
 [Matomo Analytics](https://matomo.org) for Unity.
-
-## Installation
-Download the entire repository from https://github.com/lumpn/unity-matomo and use Unity's built in package manager to [Add package from disk](https://docs.unity3d.com/Manual/upm-ui-local.html).
 
 ## Usage
 ```csharp
@@ -17,6 +14,3 @@ Download the entire repository from https://github.com/lumpn/unity-matomo and us
         session.Record("AnotherGameEvent");
     }
 ```
-
-## Notes
-* See `Demo` project for details.

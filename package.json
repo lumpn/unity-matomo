@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "displayName": "Lumpn Matomo Analytics",
   "description": "Matomo Analytics tracker for Unity.",
-  "unity": "2017.1",
   "dependencies": {
     "com.unity.ext.nunit": "1.0.0",
     "com.unity.modules.unitywebrequest": "1.0.0"
