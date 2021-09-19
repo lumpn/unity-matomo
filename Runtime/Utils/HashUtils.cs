@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Lumpn.Matomo.Utils
 {
-    public static class HashUtils
+    internal static class HashUtils
     {
         public static byte[] HashMD5(string str)
         {

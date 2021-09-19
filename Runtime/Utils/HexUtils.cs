@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Lumpn.Matomo.Utils
 {
-    public static class HexUtils
+    internal static class HexUtils
     {
         public static string ToString(byte[] bytes)
         {
