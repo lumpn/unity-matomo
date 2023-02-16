@@ -22,6 +22,7 @@ namespace Lumpn.Matomo
                 { "dimension1", SystemInfo.processorType},
                 { "dimension2", SystemInfo.graphicsDeviceName},
                 { "new_visit", "1"},
+                { "debug", "1"},
             };
 
             return session.Send("SystemInfo", parameters);
@@ -50,7 +51,7 @@ namespace Lumpn.Matomo
             {
                 yield return request.SendWebRequest();
 
-                Debug.AssertFormat(request.responseCode == 204, "{0}: {1}", request.error);
+                Debug.Assert(request.responseCode == 204, request.downloadHandler.text);
             }
         }
 
@@ -62,19 +63,6 @@ namespace Lumpn.Matomo
         private static string GetUnityVersion(string unityVersion)
         {
             return unityVersion.Substring(0, 6);
-        }
-
-        public static void Foo()
-        {
-            //var timespanMilliseconds = timespanSeconds * 1000;
-            //var url = BuildUrl(title, page, (int)timespanMilliseconds, isFirstRequest);
-
-            //stringBuilder.Append("&action_name=");
-            //stringBuilder.Append(EscapeDataString(title));
-            //sb.Append("&gt_ms=");
-            //sb.Append(timespanMilliseconds * 10);
-            //sb.Append("&pf_net=");
-            //sb.Append(timespanMilliseconds);
         }
     }
 }
