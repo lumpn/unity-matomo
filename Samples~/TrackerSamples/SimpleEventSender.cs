@@ -23,10 +23,6 @@ namespace Lumpn.Matomo.Samples
                 {
                     yield return request.SendWebRequest();
                     Debug.Log(request.responseCode);
-                    foreach (var header in request.GetResponseHeaders())
-                    {
-                        UnityEngine.Debug.LogFormat("{0}: {1}", header.Key, header.Value);
-                    }
                 }
             }
         }
