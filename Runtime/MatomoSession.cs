@@ -55,15 +55,16 @@ namespace Lumpn.Matomo
 
             var request = new UnityWebRequest(url, UnityWebRequest.kHttpVerbGET, null, null);
             request.SetRequestHeader("Accept-Language", "de"); // system language
-            request.SetRequestHeader("http-sec-ch-ua-platform", "Playstation 5");
+            request.SetRequestHeader("Model", "PlayStation 5");
+            request.SetRequestHeader("Platform", "PlayStation 5");
             return request;
         }
 
         [System.Serializable]
         public struct ClientHints
         {
-            public string platform;
-            //public string model;
+            public string Model;
+            public string Platform;
         }
 
         private string BuildUrl(string title, string page, int timespanMilliseconds)
@@ -72,9 +73,9 @@ namespace Lumpn.Matomo
 
             var clientHints = new ClientHints
             {
-                platform = "Playstation 5",
+                Model = "PlayStation 5",
+                Platform = "PlayStation 5",
             };
-            var json = UnityEngine.JsonUtility.ToJson(clientHints);
 
             stringBuilder.Append(baseUrl);
             stringBuilder.Append(Uri.EscapeDataString(page));
@@ -89,11 +90,9 @@ namespace Lumpn.Matomo
             stringBuilder.Append("x");
             stringBuilder.Append(UnityEngine.Screen.height);
             //stringBuilder.Append("&ua=");
-            //stringBuilder.Append(Uri.EscapeDataString("Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0"));
-            //stringBuilder.Append(Uri.EscapeDataString("Mozilla/5.0 (Windows NT 10.0; XBox One X) UnityPlayer/2019.5 NVIDIA/2070"));
             //stringBuilder.Append(Uri.EscapeDataString("UnityPlayer/2019.6 (Playstation 5)"));
-            //stringBuilder.Append("&uadata=");
-            //stringBuilder.Append(Uri.EscapeDataString(json));
+            stringBuilder.Append("&uadata=");
+            stringBuilder.Append(Uri.EscapeDataString(UnityEngine.JsonUtility.ToJson(clientHints)));
             stringBuilder.Append("&rand=");
             stringBuilder.Append(random.Next());
 
