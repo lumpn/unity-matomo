@@ -12,19 +12,20 @@ namespace Lumpn.Matomo.Utils
         {
             switch (platform)
             {
-                case RuntimePlatform.OSXPlayer:
                 case RuntimePlatform.OSXEditor:
+                case RuntimePlatform.WindowsEditor:
+                case RuntimePlatform.LinuxEditor:
+                    return "Palm OS"; // routes all editor traffic to fake device
+                case RuntimePlatform.OSXPlayer:
                     return "Mac OSX";
                 case RuntimePlatform.WindowsPlayer:
-                case RuntimePlatform.WindowsEditor:
                     return "Windows";
+                case RuntimePlatform.LinuxPlayer:
+                    return "Linux";
                 case RuntimePlatform.IPhonePlayer:
                     return "iOS";
                 case RuntimePlatform.Android:
                     return "Android";
-                case RuntimePlatform.LinuxPlayer:
-                case RuntimePlatform.LinuxEditor:
-                    return "Linux";
                 case RuntimePlatform.PS4:
                     return "PlayStation 4";
                 case RuntimePlatform.PS5:
