@@ -21,8 +21,10 @@ namespace Lumpn.Matomo
             var sb = new StringBuilder(matomoUrl);
             sb.Append("/matomo.php?apiv=1&rec=1&send_image=0&idsite=");
             sb.Append(websiteId);
+
             sb.Append("&_id=");
             HexUtils.AppendHex(sb, userId);
+
             sb.Append("&url=");
             sb.Append(EscapeDataString(websiteUrl));
             sb.Append(EscapeDataString("/"));
@@ -36,22 +38,25 @@ namespace Lumpn.Matomo
             this.baseUrl = baseUrl;
         }
 
-        public UnityWebRequest CreateWebRequest(string page, IDictionary<string, string> parameters)
+        public UnityWebRequest CreateWebRequest(string page, int time, IDictionary<string, string> parameters)
         {
-            var url = BuildUrl(page, parameters);
+            var url = BuildUrl(page, time, parameters);
             UnityEngine.Debug.Log(url);
 
             var request = new UnityWebRequest(url, UnityWebRequest.kHttpVerbGET, null, null);
             return request;
         }
 
-        private string BuildUrl(string page, IDictionary<string, string> parameters)
+        private string BuildUrl(string page, int time, IDictionary<string, string> parameters)
         {
             var sb = stringBuilder;
             sb.Clear();
 
             sb.Append(baseUrl);
             sb.Append(EscapeDataString(page));
+
+            sb.Append("&pf_srv=");
+            sb.Append(time);
 
             foreach (var parameter in parameters)
             {
@@ -63,7 +68,6 @@ namespace Lumpn.Matomo
 
             sb.Append("&rand=");
             sb.Append(random.Next());
-
 
             var url = sb.ToString();
             sb.Clear();

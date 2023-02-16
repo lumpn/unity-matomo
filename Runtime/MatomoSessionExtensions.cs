@@ -24,27 +24,17 @@ namespace Lumpn.Matomo
                 { "dimension2", SystemInfo.graphicsDeviceName},
             };
 
-            return session.Send("SystemInfo", parameters);
+            return session.Send("SystemInfo", 0f, parameters);
         }
 
-        public static IEnumerator SendEvent(this MatomoSession session, string eventName)
+        public static IEnumerator SendEvent(this MatomoSession session, string eventName, float eventTime)
         {
-            return session.Send(eventName, emptyParameters);
+            return session.Send(eventName, eventTime, emptyParameters);
         }
 
-        public static IEnumerator SendEvent(this MatomoSession session, string eventName, float time)
+        public static IEnumerator Send(this MatomoSession session, string page, float time, IDictionary<string, string> parameters)
         {
-            var parameters = new Dictionary<string, string>
-            {
-                {"pf_srv", ((int)time).ToString() },
-            };
-
-            return session.Send(eventName, parameters);
-        }
-
-        public static IEnumerator Send(this MatomoSession session, string page, IDictionary<string, string> parameters)
-        {
-            using (var request = session.CreateWebRequest(page, parameters))
+            using (var request = session.CreateWebRequest(page, (int)time, parameters))
             {
                 yield return request.SendWebRequest();
 
