@@ -20,11 +20,13 @@ namespace Lumpn.Matomo.Demo
         {
             var tracker = new MatomoTracker(matomoUrl, websiteUrl, websiteId);
             var session = tracker.CreateSession(userId);
-            var op = session.Record("TrackPageView", "TrackerTest/TrackPageView", 0.1f);
-            yield return op;
 
-            var request = op.webRequest;
-            Assert.AreEqual(200, request.responseCode);
+            using (var request = session.CreateWebRequest("TrackPageView", "TrackerTest/TrackPageView", 0.1f))
+            {
+                yield return request.SendWebRequest();
+
+                Assert.AreEqual(200, request.responseCode);
+            }
         }
     }
 }

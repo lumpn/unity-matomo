@@ -19,11 +19,12 @@ namespace Lumpn.Matomo.Demo
 
             for (int i = 0; i < numRecords; i++)
             {
-                var op = session.Record("Start", "TrackerDemo/Start", Random.value);
-                yield return op;
-
-                var request = op.webRequest;
-                Debug.Log(request.responseCode);
+                using (var request = session.CreateWebRequest("Start", "TrackerDemo/Start", Random.value))
+                {
+                    yield return request.SendWebRequest();
+                    Debug.Log(request.responseCode);
+                    Debug.Log(request.downloadHandler.text);
+                }
             }
         }
     }
