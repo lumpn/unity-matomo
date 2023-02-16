@@ -14,7 +14,7 @@ namespace Lumpn.Matomo.Utils
             {
                 case RuntimePlatform.OSXPlayer:
                 case RuntimePlatform.OSXEditor:
-                    return "OS X";
+                    return "Mac OSX";
                 case RuntimePlatform.WindowsPlayer:
                 case RuntimePlatform.WindowsEditor:
                     return "Windows";
