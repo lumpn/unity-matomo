@@ -3,8 +3,8 @@
 //----------------------------------------
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using Lumpn.Matomo.Utils;
+using UnityEngine;
 
 namespace Lumpn.Matomo
 {
@@ -16,13 +16,12 @@ namespace Lumpn.Matomo
         {
             var parameters = new Dictionary<string, string>
             {
+                { "new_visit", "1"},
                 { "ua", GetUserAgent(Application.unityVersion, Application.platform) },
                 { "lang", LanguageUtils.GetLanguageCode(Application.systemLanguage) },
                 { "res", string.Format("{0}x{1}", Screen.width, Screen.height)},
                 { "dimension1", SystemInfo.processorType},
                 { "dimension2", SystemInfo.graphicsDeviceName},
-                { "new_visit", "1"},
-                { "debug", "1"},
             };
 
             return session.Send("SystemInfo", parameters);
@@ -35,11 +34,9 @@ namespace Lumpn.Matomo
 
         public static IEnumerator SendEvent(this MatomoSession session, string eventName, float time)
         {
-            var timeMilliseconds = (int)(time * 10);
-
             var parameters = new Dictionary<string, string>
             {
-                {"pf_srv", timeMilliseconds.ToString()},
+                {"pf_srv", ((int)time).ToString() },
             };
 
             return session.Send(eventName, parameters);
@@ -51,7 +48,7 @@ namespace Lumpn.Matomo
             {
                 yield return request.SendWebRequest();
 
-                Debug.Assert(request.responseCode == 204, request.downloadHandler.text);
+                Debug.Assert(request.responseCode == 204, request.error);
             }
         }
 

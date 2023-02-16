@@ -41,7 +41,7 @@ namespace Lumpn.Matomo
             var url = BuildUrl(page, parameters);
             UnityEngine.Debug.Log(url);
 
-            var request = new UnityWebRequest(url, UnityWebRequest.kHttpVerbGET, new DownloadHandlerBuffer(), null);
+            var request = new UnityWebRequest(url, UnityWebRequest.kHttpVerbGET, null, null);
             return request;
         }
 
@@ -61,7 +61,7 @@ namespace Lumpn.Matomo
                 sb.Append(EscapeDataString(parameter.Value));
             }
 
-            sb.Append("&debug=1&rand=");
+            sb.Append("&rand=");
             sb.Append(random.Next());
 
 
