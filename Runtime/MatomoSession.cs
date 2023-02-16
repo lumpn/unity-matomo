@@ -41,8 +41,6 @@ namespace Lumpn.Matomo
         public UnityWebRequest CreateWebRequest(string page, int time, IDictionary<string, string> parameters)
         {
             var url = BuildUrl(page, time, parameters);
-            UnityEngine.Debug.Log(url);
-
             var request = new UnityWebRequest(url, UnityWebRequest.kHttpVerbGET, null, null);
             return request;
         }
