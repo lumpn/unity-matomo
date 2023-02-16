@@ -1,7 +1,7 @@
 {
   "name": "de.lumpn.unity-matomo",
-  "version": "1.0.1",
-  "displayName": "Matomo Analytics",
+  "version": "1.1.0",
+  "displayName": "Lumpn Matomo Analytics",
   "description": "Matomo Analytics tracker for Unity.",
   "dependencies": {
     "com.unity.ext.nunit": "1.0.0",
@@ -15,5 +15,11 @@
   "author": {
     "name": "Jonas Boetel",
     "url": "https://github.com/lumpn"
-  }
+  },
+  "samples": [
+    {
+      "displayName": "Tracker Samples",
+      "path": "Samples~/TrackerSamples"
+    }
+  ]
 }
