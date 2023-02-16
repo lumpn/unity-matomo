@@ -37,13 +37,12 @@ namespace Lumpn.Matomo
             this.random = new Random(seed);
         }
 
-        public UnityWebRequestAsyncOperation Record(string title, string page, float timespanSeconds)
+        public UnityWebRequest CreateWebRequest(string title, string page, float timespanSeconds)
         {
             var timespanMilliseconds = timespanSeconds * 1000;
             var url = BuildUrl(title, page, (int)timespanMilliseconds);
             var request = new UnityWebRequest(url, UnityWebRequest.kHttpVerbGET, null, null);
-            var op = request.SendWebRequest();
-            return op;
+            return request;
         }
 
         private string BuildUrl(string title, string page, int timespanMilliseconds)
