@@ -243,7 +243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trackerData: {fileID: 11400000, guid: b9d14141ebfb65e4eb2a1c731b55d998, type: 2}
-  numRecords: 1
+  numRecords: 3
 --- !u!4 &707985442
 Transform:
   m_ObjectHideFlags: 0
