@@ -6,13 +6,16 @@ using UnityEngine;
 
 namespace Lumpn.Matomo
 {
+    [HelpURL("https://matomo.org/faq/how-to/create-and-manage-websites/")]
     [CreateAssetMenu(menuName = "Data/Matomo/MatomoTrackerData")]
     public sealed class MatomoTrackerData : ScriptableObject
     {
-        [Tooltip("The path to the Matomo installation. Must contain the matomo.php file.")]
+        [Header("Matomo")]
+        [Tooltip("Matomo installation URL. Must contain the `matomo.php` file.")]
         [SerializeField] private string matomoUrl = "http://matomo.example.com";
 
-        [Tooltip("The project to track. In Matomo referred to as website.")]
+        [Header("Project")]
+        [Tooltip("The project to track. In Matomo referred to as `website`.")]
         [SerializeField] private string websiteUrl = "http://example.com";
         [SerializeField] private int websiteId = 1;
 
