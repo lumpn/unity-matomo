@@ -17,13 +17,11 @@ namespace Lumpn.Matomo.Samples
             var tracker = trackerData.CreateTracker();
             var session = tracker.CreateSession("user" + Random.Range(0, 1000));
 
+            yield return session.SendSystemInfo();
+
             for (int i = 0; i < numRecords; i++)
             {
-                using (var request = session.CreateWebRequest("Tutorial/Part1", "TrackerDemo/Start", Random.value))
-                {
-                    yield return request.SendWebRequest();
-                    Debug.Log(request.responseCode);
-                }
+                yield return session.SendEvent("TrackerDemo/Start");
             }
         }
     }
