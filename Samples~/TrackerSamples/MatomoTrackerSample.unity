@@ -43,7 +43,7 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
+  serializedVersion: 11
   m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -118,8 +118,6 @@ NavMeshSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
-    maxJobWorkers: 0
-    preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
@@ -199,7 +197,6 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
-  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!4 &705507995
@@ -227,7 +224,7 @@ GameObject:
   - component: {fileID: 707985442}
   - component: {fileID: 707985441}
   m_Layer: 0
-  m_Name: Tracker
+  m_Name: MatomoTracker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -242,11 +239,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 707985440}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b6b9e7748e700e409c09ff321a8c185, type: 3}
+  m_Script: {fileID: 11500000, guid: ab8b3065fe63f154489f270b1605ffb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackerData: {fileID: 11400000, guid: b9d14141ebfb65e4eb2a1c731b55d998, type: 2}
-  numRecords: 10
 --- !u!4 &707985442
 Transform:
   m_ObjectHideFlags: 0

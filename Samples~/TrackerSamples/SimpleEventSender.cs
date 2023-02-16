@@ -1,13 +1,13 @@
-//----------------------------------------
+﻿//----------------------------------------
 // MIT License
 // Copyright(c) 2021 Jonas Boetel
 //----------------------------------------
 using System.Collections;
 using UnityEngine;
 
-namespace Lumpn.Matomo.Demo
+namespace Lumpn.Matomo.Samples
 {
-    public class TrackerDemo : MonoBehaviour
+    public class SimpleEventSender : MonoBehaviour
     {
         [SerializeField] private MatomoTrackerData trackerData;
         [SerializeField] private int numRecords = 10;
