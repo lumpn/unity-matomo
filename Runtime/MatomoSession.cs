@@ -53,9 +53,6 @@ namespace Lumpn.Matomo
             sb.Append(baseUrl);
             sb.Append(EscapeDataString(page));
 
-            sb.Append("&rand=");
-            sb.Append(random.Next());
-
             foreach (var parameter in parameters)
             {
                 sb.Append("&");
@@ -63,6 +60,9 @@ namespace Lumpn.Matomo
                 sb.Append("=");
                 sb.Append(EscapeDataString(parameter.Value));
             }
+
+            sb.Append("&rand=");
+            sb.Append(random.Next());
 
             var url = sb.ToString();
             sb.Clear();

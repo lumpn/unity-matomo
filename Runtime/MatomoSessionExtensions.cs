@@ -16,12 +16,12 @@ namespace Lumpn.Matomo
         {
             var parameters = new Dictionary<string, string>
             {
-                { "new_visit", "1"},
                 { "ua", GetUserAgent(Application.unityVersion, Application.platform) },
                 { "lang", LanguageUtils.GetLanguageCode(Application.systemLanguage) },
                 { "res", string.Format("{0}x{1}", Screen.width, Screen.height)},
                 { "dimension1", SystemInfo.processorType},
                 { "dimension2", SystemInfo.graphicsDeviceName},
+                { "new_visit", "1"},
             };
 
             return session.Send("SystemInfo", parameters);
@@ -34,11 +34,11 @@ namespace Lumpn.Matomo
 
         public static IEnumerator SendEvent(this MatomoSession session, string eventName, float time)
         {
-            var timeMilliseconds = (int)time * 100;
+            var timeMilliseconds = (int)(time * 10);
 
             var parameters = new Dictionary<string, string>
             {
-                {"gt_ms", timeMilliseconds.ToString()},
+                {"pf_srv", timeMilliseconds.ToString()},
             };
 
             return session.Send(eventName, parameters);

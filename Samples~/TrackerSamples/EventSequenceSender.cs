@@ -18,8 +18,9 @@ namespace Lumpn.Matomo.Samples
             var session = tracker.CreateSession("user" + Random.Range(0, 1000));
 
             yield return session.SendSystemInfo();
+            yield return new WaitForSeconds(1f);
 
-            foreach(var eventName in events)
+            foreach (var eventName in events)
             {
                 yield return session.SendEvent(eventName, Time.time);
                 yield return new WaitForSeconds(Random.Range(0.5f, 1.5f));
