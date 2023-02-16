@@ -13,7 +13,6 @@ namespace Lumpn.Matomo
     {
         private readonly StringBuilder stringBuilder = new StringBuilder();
         private readonly string baseUrl;
-        private readonly System.Random random;
 
         public static MatomoSession Create(string matomoUrl, string websiteUrl, int websiteId, byte[] userHash)
         {
@@ -27,20 +26,22 @@ namespace Lumpn.Matomo
             sb.Append("x");
             sb.Append(Screen.height);
             sb.Append("&ua=");
-            sb.Append(EscapeDataString("UnityPlayer/2019.6 (Playstation 5)"));
+            sb.Append(EscapeDataString("UnityPlayer/2019.4 (Playstation 4)"));
+            sb.Append("&dimension1=");
+            sb.Append(EscapeDataString(SystemInfo.graphicsDeviceName));
+            sb.Append("&dimension2=");
+            sb.Append(EscapeDataString(SystemInfo.processorType));
             sb.Append("&url=");
             sb.Append(EscapeDataString(websiteUrl));
             sb.Append(EscapeDataString("/"));
 
             var url = sb.ToString();
-            var seed = CalculateSeed(userHash);
-            return new MatomoSession(url, seed);
+            return new MatomoSession(url);
         }
 
-        private MatomoSession(string baseUrl, int seed)
+        private MatomoSession(string baseUrl)
         {
             this.baseUrl = baseUrl;
-            this.random = new System.Random(seed);
         }
 
         public UnityWebRequest CreateWebRequest(string title, string page, float timespanSeconds)
@@ -77,25 +78,12 @@ namespace Lumpn.Matomo
             stringBuilder.Append("&pf_net=");
             stringBuilder.Append(timespanMilliseconds);
             stringBuilder.Append("&rand=");
-            stringBuilder.Append(random.Next());
+            stringBuilder.Append(Random.Range(0, 100000));
 
             var url = stringBuilder.ToString();
             stringBuilder.Clear();
 
             return url;
-        }
-
-        private static int CalculateSeed(byte[] bytes)
-        {
-            unchecked
-            {
-                int result = 17;
-                foreach (var value in bytes)
-                {
-                    result = result * 23 + value;
-                }
-                return result;
-            }
         }
 
         private static string EscapeDataString(string str)

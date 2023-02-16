@@ -19,7 +19,7 @@ namespace Lumpn.Matomo.Samples
 
             for (int i = 0; i < numRecords; i++)
             {
-                using (var request = session.CreateWebRequest("Start", "TrackerDemo/Start", Random.value))
+                using (var request = session.CreateWebRequest("Tutorial/Part1", "TrackerDemo/Start", Random.value))
                 {
                     yield return request.SendWebRequest();
                     Debug.Log(request.responseCode);
