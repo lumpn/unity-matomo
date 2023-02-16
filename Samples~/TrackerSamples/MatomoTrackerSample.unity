@@ -222,7 +222,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 707985442}
-  - component: {fileID: 707985441}
+  - component: {fileID: 707985443}
   m_Layer: 0
   m_Name: MatomoTracker
   m_TagString: Untagged
@@ -230,20 +230,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &707985441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 707985440}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab8b3065fe63f154489f270b1605ffb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trackerData: {fileID: 11400000, guid: b9d14141ebfb65e4eb2a1c731b55d998, type: 2}
-  numRecords: 3
 --- !u!4 &707985442
 Transform:
   m_ObjectHideFlags: 0
@@ -258,6 +244,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &707985443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707985440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 380d73758bf89ef438c1cd4e326dd717, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trackerData: {fileID: 11400000, guid: b9d14141ebfb65e4eb2a1c731b55d998, type: 2}
+  events:
+  - Game/Start
+  - Player/Spawn
+  - Gather/Wood
+  - Gather/Stone
+  - Craft/Axe
+  - Kill/Goblin
+  - Kill/Goblin
+  - Player/Death
+  - Player/Spawn
+  - Gather/Wood
+  - Craft/Hammer
+  - Gather/Wood
+  - Gather/Wood
+  - Build/Wall
+  - Build/Wall
+  - Player/Death
+  - Game/Quit
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

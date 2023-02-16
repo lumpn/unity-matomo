@@ -32,7 +32,19 @@ namespace Lumpn.Matomo
             return session.Send(eventName, emptyParameters);
         }
 
-        private static IEnumerator Send(this MatomoSession session, string page, IDictionary<string, string> parameters)
+        public static IEnumerator SendEvent(this MatomoSession session, string eventName, float time)
+        {
+            var timeMilliseconds = (int)time * 100;
+
+            var parameters = new Dictionary<string, string>
+            {
+                {"gt_ms", timeMilliseconds.ToString()},
+            };
+
+            return session.Send(eventName, parameters);
+        }
+
+        public static IEnumerator Send(this MatomoSession session, string page, IDictionary<string, string> parameters)
         {
             using (var request = session.CreateWebRequest(page, parameters))
             {
