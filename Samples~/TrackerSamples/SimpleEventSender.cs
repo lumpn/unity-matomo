@@ -15,7 +15,7 @@ namespace Lumpn.Matomo.Samples
         IEnumerator Start()
         {
             var tracker = trackerData.CreateTracker();
-            var session = tracker.CreateSession("user1234");
+            var session = tracker.CreateSession("user" + Random.Range(0, 1000));
 
             for (int i = 0; i < numRecords; i++)
             {
@@ -23,7 +23,10 @@ namespace Lumpn.Matomo.Samples
                 {
                     yield return request.SendWebRequest();
                     Debug.Log(request.responseCode);
-                    Debug.Log(request.downloadHandler.text);
+                    foreach (var header in request.GetResponseHeaders())
+                    {
+                        UnityEngine.Debug.LogFormat("{0}: {1}", header.Key, header.Value);
+                    }
                 }
             }
         }

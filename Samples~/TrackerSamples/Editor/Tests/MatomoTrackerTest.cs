@@ -26,6 +26,10 @@ namespace Lumpn.Matomo.Demo
                 yield return request.SendWebRequest();
 
                 Assert.AreEqual(200, request.responseCode);
+                foreach (var header in request.GetResponseHeaders())
+                {
+                    UnityEngine.Debug.LogFormat("{0}: {1}", header.Key, header.Value);
+                }
             }
         }
     }
