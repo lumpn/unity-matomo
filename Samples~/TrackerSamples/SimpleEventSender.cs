@@ -22,6 +22,7 @@ namespace Lumpn.Matomo.Samples
             for (int i = 0; i < numRecords; i++)
             {
                 yield return session.SendEvent("TrackerDemo/Start");
+                yield return new WaitForSeconds(1f);
             }
         }
     }
