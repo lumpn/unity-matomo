@@ -19,7 +19,7 @@ namespace Lumpn.Matomo
             this.websiteId = websiteId;
         }
 
-        public MatomoSession CreateSession(string userId)
+        public MatomoSession CreateSession(string userId = null)
         {
             var userHash = HashUtils.HashMD5(userId);
             return MatomoSession.Create(matomoUrl, websiteUrl, websiteId, userHash);
