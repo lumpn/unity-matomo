@@ -21,8 +21,17 @@ namespace Lumpn.Matomo
 
         public MatomoSession CreateSession(string userId = null)
         {
-            var userHash = HashUtils.HashMD5(userId);
+            var userHash = string.IsNullOrEmpty(userId) ? GetRandomBytes() : HashUtils.HashMD5(userId);
             return MatomoSession.Create(matomoUrl, websiteUrl, websiteId, userHash);
+        }
+
+        private static byte[] GetRandomBytes()
+        {
+            var random = new System.Random();
+
+            var bytes = new byte[16];
+            random.NextBytes(bytes);
+            return bytes;
         }
     }
 }

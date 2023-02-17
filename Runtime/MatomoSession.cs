@@ -38,10 +38,12 @@ namespace Lumpn.Matomo
             this.baseUrl = baseUrl;
         }
 
-        public UnityWebRequest CreateWebRequest(string page, int time, IDictionary<string, string> parameters)
+        public UnityWebRequest CreateWebRequest(string page, int time, IDictionary<string, string> parameters, bool debug)
         {
             var url = BuildUrl(page, time, parameters);
-            var request = new UnityWebRequest(url, UnityWebRequest.kHttpVerbGET, null, null);
+
+            var downloadHandler = debug ? new DownloadHandlerBuffer() : null;
+            var request = new UnityWebRequest(url, UnityWebRequest.kHttpVerbGET, downloadHandler, null);
             return request;
         }
 

@@ -34,7 +34,7 @@ namespace Lumpn.Matomo
 
         public static IEnumerator Send(this MatomoSession session, string page, float time, IDictionary<string, string> parameters)
         {
-            using (var request = session.CreateWebRequest(page, (int)time, parameters))
+            using (var request = session.CreateWebRequest(page, (int)time, parameters, false))
             {
                 yield return request.SendWebRequest();
 

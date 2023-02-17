@@ -235,6 +235,8 @@ MonoBehaviour:
     value: Food
   - key: search_count
     value: 250
+  - key: debug
+    value: 1
 --- !u!4 &1182563233
 Transform:
   m_ObjectHideFlags: 0
@@ -275,6 +277,8 @@ MonoBehaviour:
     value: Gems
   - key: e_v
     value: 250
+  - key: debug
+    value: 1
 --- !u!1 &1670759600
 GameObject:
   m_ObjectHideFlags: 0

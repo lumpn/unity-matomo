@@ -36,14 +36,26 @@ namespace Lumpn.Matomo.Samples
             {
                 var tracker = trackerData.CreateTracker();
                 session = tracker.CreateSession(userId);
-
-                Debug.Log("Sending system info");
-                yield return session.SendSystemInfo();
             }
 
-            Debug.LogFormat("Sending event with {0} parameters", parameters.Length);
             var dict = parameters.ToDictionary(p => p.key, p => p.value);
-            yield return session.Send(eventName, Time.time, dict);
+            using (var request = session.CreateWebRequest(eventName, 0, dict, true))
+            {
+                Debug.Log(request.url);
+                yield return request.SendWebRequest();
+
+                switch (request.responseCode)
+                {
+                    case 204:
+                        break; // all good
+                    case 200:
+                        Debug.Log(request.downloadHandler.text);
+                        break;
+                    default:
+                        Debug.LogErrorFormat("Error {0}: {1}", request.responseCode, request.error);
+                        break;
+                }
+            }
         }
     }
 }
