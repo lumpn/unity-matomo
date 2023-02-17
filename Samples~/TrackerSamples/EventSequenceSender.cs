@@ -12,7 +12,7 @@ namespace Lumpn.Matomo.Samples
         [Header("Matomo")]
         [SerializeField] private MatomoTrackerData trackerData;
 
-        [Header("Event sequence to send over time in play mode")]
+        [Header("Event sequence to record over time in play mode")]
         [SerializeField] private string[] events;
 
         IEnumerator Start()
@@ -20,14 +20,14 @@ namespace Lumpn.Matomo.Samples
             var tracker = trackerData.CreateTracker();
             var session = tracker.CreateSession();
 
-            Debug.Log("Sending system info");
-            yield return session.SendSystemInfo();
+            Debug.Log("Recording system info");
+            yield return session.RecordSystemInfo();
             yield return new WaitForSeconds(1f);
 
             foreach (var eventName in events)
             {
-                Debug.LogFormat(this, "Sending event '{0}'", eventName);
-                yield return session.SendEvent(eventName, Time.time);
+                Debug.LogFormat(this, "Recording event '{0}'", eventName);
+                yield return session.RecordEvent(eventName, Time.time);
                 yield return new WaitForSeconds(Random.Range(0.5f, 1.5f));
             }
         }

@@ -12,7 +12,7 @@ namespace Lumpn.Matomo
     {
         private static readonly Dictionary<string, string> emptyParameters = new Dictionary<string, string>();
 
-        public static IEnumerator SendSystemInfo(this MatomoSession session)
+        public static IEnumerator RecordSystemInfo(this MatomoSession session)
         {
             var parameters = new Dictionary<string, string>
             {
@@ -24,15 +24,15 @@ namespace Lumpn.Matomo
                 { "dimension2", SystemInfo.graphicsDeviceName},
             };
 
-            return session.Send("SystemInfo", 0f, parameters);
+            return session.Record("SystemInfo", 0f, parameters);
         }
 
-        public static IEnumerator SendEvent(this MatomoSession session, string eventName, float eventTime)
+        public static IEnumerator RecordEvent(this MatomoSession session, string eventName, float eventTime)
         {
-            return session.Send(eventName, eventTime, emptyParameters);
+            return session.Record(eventName, eventTime, emptyParameters);
         }
 
-        public static IEnumerator Send(this MatomoSession session, string page, float time, IDictionary<string, string> parameters)
+        public static IEnumerator Record(this MatomoSession session, string page, float time, IDictionary<string, string> parameters)
         {
             using (var request = session.CreateWebRequest(page, (int)time, parameters, false))
             {
