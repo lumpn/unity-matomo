@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eccfbf351c56d5a4da76bf15161d1e52, type: 3}
   m_Name: MatomoTrackerData
   m_EditorClassIdentifier: 
-  matomoUrl: https://matomo.lumpn.de/matomo
-  websiteUrl: https://unity.game
+  matomoUrl: 
+  websiteUrl: https://unity-project.game
   websiteId: 1
