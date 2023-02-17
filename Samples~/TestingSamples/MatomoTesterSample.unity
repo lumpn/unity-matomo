@@ -204,7 +204,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1182563233}
-  - component: {fileID: 1182563232}
   - component: {fileID: 1182563234}
   m_Layer: 0
   m_Name: MatomoTester
@@ -213,30 +212,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1182563232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1182563231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ccdeae0e628f6e42ab0d1c3569992bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trackerData: {fileID: 11400000, guid: a7a759fbb3fb4c842bf53c399a5df5b6, type: 2}
-  userId: 
-  eventName: Search
-  parameters:
-  - key: search
-    value: Cheese
-  - key: search_cat
-    value: Food
-  - key: search_count
-    value: 250
-  - key: debug
-    value: 1
 --- !u!4 &1182563233
 Transform:
   m_ObjectHideFlags: 0

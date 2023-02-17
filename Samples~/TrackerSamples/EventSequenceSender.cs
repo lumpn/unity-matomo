@@ -9,7 +9,10 @@ namespace Lumpn.Matomo.Samples
 {
     public class EventSequenceSender : MonoBehaviour
     {
+        [Header("Matomo")]
         [SerializeField] private MatomoTrackerData trackerData;
+
+        [Header("Event sequence to send over time in play mode")]
         [SerializeField] private string[] events;
 
         IEnumerator Start()
