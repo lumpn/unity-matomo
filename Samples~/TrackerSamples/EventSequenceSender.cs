@@ -10,15 +10,14 @@ namespace Lumpn.Matomo.Samples
     public class EventSequenceSender : MonoBehaviour
     {
         [Header("Matomo")]
-        [SerializeField] private MatomoTrackerData trackerData;
+        [SerializeField] private MatomoConfig matomoConfig;
 
         [Header("Event sequence to record over time in play mode")]
         [SerializeField] private string[] events;
 
         IEnumerator Start()
         {
-            var tracker = trackerData.CreateTracker();
-            var session = tracker.CreateSession();
+            var session = matomoConfig.CreateSession();
 
             Debug.Log("Recording system info");
             yield return session.RecordSystemInfo();

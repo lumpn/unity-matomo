@@ -19,7 +19,7 @@ namespace Lumpn.Matomo.Samples
         }
 
         [Header("Matomo")]
-        [SerializeField] private MatomoTrackerData trackerData;
+        [SerializeField] private MatomoConfig matomoConfig;
 
         [Tooltip("Set user id to track across sessions. Leave blank to randomize across sessions.")]
         [SerializeField] private string userId;
@@ -34,8 +34,7 @@ namespace Lumpn.Matomo.Samples
         {
             if (session == null)
             {
-                var tracker = trackerData.CreateTracker();
-                session = tracker.CreateSession(userId);
+                session = matomoConfig.CreateSession(userId);
             }
 
             var dict = parameters.ToDictionary(p => p.key, p => p.value);

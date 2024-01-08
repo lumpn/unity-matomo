@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 380d73758bf89ef438c1cd4e326dd717, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackerData: {fileID: 11400000, guid: b9d14141ebfb65e4eb2a1c731b55d998, type: 2}
+  matomoConfig: {fileID: 11400000, guid: b9d14141ebfb65e4eb2a1c731b55d998, type: 2}
   events:
   - Game/Start
   - Player/Spawn

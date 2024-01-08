@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ccdeae0e628f6e42ab0d1c3569992bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackerData: {fileID: 11400000, guid: a7a759fbb3fb4c842bf53c399a5df5b6, type: 2}
+  matomoConfig: {fileID: 11400000, guid: a7a759fbb3fb4c842bf53c399a5df5b6, type: 2}
   userId: 
   eventName: CustomEvent
   parameters:

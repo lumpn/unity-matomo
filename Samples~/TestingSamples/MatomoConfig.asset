@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eccfbf351c56d5a4da76bf15161d1e52, type: 3}
-  m_Name: MatomoTrackerData
+  m_Name: MatomoConfig
   m_EditorClassIdentifier: 
   matomoUrl: 
   websiteUrl: https://unity-project.game
