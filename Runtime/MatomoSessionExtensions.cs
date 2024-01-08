@@ -32,7 +32,7 @@ namespace Lumpn.Matomo
             return session.Record(eventName, eventTime, emptyParameters);
         }
 
-        public static IEnumerator Record(this MatomoSession session, string page, float time, IDictionary<string, string> parameters)
+        public static IEnumerator Record(this MatomoSession session, string page, float time, IReadOnlyDictionary<string, string> parameters)
         {
             using (var request = session.CreateWebRequest(page, (int)time, parameters, false))
             {

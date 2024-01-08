@@ -38,7 +38,7 @@ namespace Lumpn.Matomo
             this.baseUrl = baseUrl;
         }
 
-        public UnityWebRequest CreateWebRequest(string page, int time, IDictionary<string, string> parameters, bool debug)
+        public UnityWebRequest CreateWebRequest(string page, int time, IReadOnlyDictionary<string, string> parameters, bool debug)
         {
             var url = BuildUrl(page, time, parameters);
 
@@ -47,7 +47,7 @@ namespace Lumpn.Matomo
             return request;
         }
 
-        private string BuildUrl(string page, int time, IDictionary<string, string> parameters)
+        private string BuildUrl(string page, int time, IReadOnlyDictionary<string, string> parameters)
         {
             var sb = stringBuilder;
             sb.Clear();
