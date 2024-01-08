@@ -40,14 +40,14 @@ namespace Lumpn.Matomo
 
         public UnityWebRequest CreateWebRequest(string page, int time, IReadOnlyDictionary<string, string> parameters, bool debug)
         {
-            var url = BuildUrl(page, time, parameters);
+            var url = BuildUrl(page, time, parameters, debug);
 
             var downloadHandler = debug ? new DownloadHandlerBuffer() : null;
             var request = new UnityWebRequest(url, UnityWebRequest.kHttpVerbGET, downloadHandler, null);
             return request;
         }
 
-        private string BuildUrl(string page, int time, IReadOnlyDictionary<string, string> parameters)
+        private string BuildUrl(string page, int time, IReadOnlyDictionary<string, string> parameters, bool debug)
         {
             var sb = stringBuilder;
             sb.Clear();
@@ -64,6 +64,11 @@ namespace Lumpn.Matomo
                 sb.Append(parameter.Key);
                 sb.Append("=");
                 sb.Append(EscapeDataString(parameter.Value));
+            }
+
+            if (debug)
+            {
+                sb.Append("&debug=1");
             }
 
             sb.Append("&rand=");
